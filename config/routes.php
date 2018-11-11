@@ -32,4 +32,13 @@ $routes->add(
     )
 );
 
+$routes->add(
+    'cash_register_identify',
+    new Route(
+        '/cash-register/identify', [
+        '_controller' => [\App\Controller\CashRegister\AuthenticationController::class, 'loginAction'],
+    ], [], [], '', [], ['POST']
+    )
+);
+
 return $routes;
