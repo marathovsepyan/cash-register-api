@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -54,5 +55,21 @@ class ProductRepository extends ServiceEntityRepository
         $products = $this->findBy([], [], $limit, $offset);
 
         return $products;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Product
+     * @throws EntityNotFoundException
+     */
+    public function getById(int $id): Product
+    {
+        $product = $this->find($id);
+        if (is_null($product)) {
+            throw new EntityNotFoundException('Product with given id could not be found');
+        }
+
+        return $product;
     }
 }

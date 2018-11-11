@@ -50,4 +50,49 @@ $routes->add(
     )
 );
 
+$routes->add(
+    'create_receipt',
+    new Route(
+        '/receipts', [
+        '_controller' => [\App\Controller\CashRegister\ReceiptController::class, 'createOneActon'],
+    ], [], [], '', [], ['POST']
+    )
+);
+
+$routes->add(
+    'finish_receipt',
+    new Route(
+        '/receipts/{id}/finish', [
+        '_controller' => [\App\Controller\CashRegister\ReceiptController::class, 'finishOneAction'],
+    ], [], [], '', [], ['PATCH']
+    )
+);
+
+$routes->add(
+    'add_product_to_receipt',
+    new Route(
+        '/receipts/{id}/products/{barcode}', [
+        '_controller' => [\App\Controller\CashRegister\ReceiptController::class, 'addProductToReceiptAction'],
+    ], [], [], '', [], ['POST']
+    )
+);
+
+$routes->add(
+    'change_receipt_last_product_amount',
+    new Route(
+        '/receipts/{id}/last-product-amount', [
+        '_controller' => [\App\Controller\CashRegister\ReceiptController::class, 'changeLastProductAmountAction'],
+    ], [], [], '', [], ['PATCH']
+    )
+);
+
+$routes->add(
+    'get_receipt_data',
+    new Route(
+        '/receipts/{id}', [
+        '_controller' => [\App\Controller\CashRegister\ReceiptController::class, 'getOneAction'],
+    ], [], [], '', [], ['GET']
+    )
+);
+
 return $routes;
