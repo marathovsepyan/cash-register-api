@@ -14,4 +14,22 @@ $routes->add(
     )
 );
 
+$routes->add(
+    'create_product',
+    new Route(
+        '/products', [
+        '_controller' => [\App\Controller\Admin\ProductController::class, 'createOneAction'],
+    ], [], [], '', [], ['POST']
+    )
+);
+
+$routes->add(
+    'list_products',
+    new Route(
+        '/products', [
+        '_controller' => [\App\Controller\Admin\ProductController::class, 'getListAction'],
+    ], [], [], '', [], ['GET']
+    )
+);
+
 return $routes;

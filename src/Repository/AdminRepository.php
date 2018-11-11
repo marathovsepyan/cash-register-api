@@ -35,4 +35,16 @@ class AdminRepository extends ServiceEntityRepository
 
         return $admin;
     }
+
+    /**
+     * @param string $token
+     *
+     * @return Admin|null
+     */
+    public function findOneByToken(string $token)
+    {
+        $admin = $this->findOneBy(['token' => $token]);
+
+        return $admin;
+    }
 }
