@@ -41,4 +41,13 @@ $routes->add(
     )
 );
 
+$routes->add(
+    'get_product',
+    new Route(
+        '/products/{barcode}', [
+        '_controller' => [\App\Controller\CashRegister\ProductController::class, 'getOneAction'],
+    ], [], [], '', [], ['GET']
+    )
+);
+
 return $routes;
