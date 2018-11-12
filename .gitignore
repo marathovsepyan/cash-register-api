@@ -18,3 +18,7 @@
 
 ###> PHPStorm config directory
 .idea
+
+###> phpunit/phpunit ###
+/phpunit.xml
+###< phpunit/phpunit ###
